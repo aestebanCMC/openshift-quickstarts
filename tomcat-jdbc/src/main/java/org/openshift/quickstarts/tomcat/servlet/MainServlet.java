@@ -23,7 +23,7 @@ import java.sql.SQLException;
  */
 public class MainServlet extends HttpServlet {
 
-    private TomcatService tomcatService = new TomcatService();
+    //private TomcatService tomcatService = new TomcatService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,13 +41,13 @@ public class MainServlet extends HttpServlet {
                 } else if (line.trim().equals("<!-- end repeat for each entry -->")) {
                     insideLoop = false;
                     String entryTemplate = sb.toString();
-                    for (TomcatEntry entry : tomcatService.getAllEntries()) {
-                        out.println(
-                                entryTemplate
-                                        .replace("{{ summary }}", escapeHtml(entry.getSummary()))
-                                        .replace("{{ description }}", escapeHtml(entry.getDescription()))
-                        );
-                    }
+                    //for (TomcatEntry entry : tomcatService.getAllEntries()) {
+                    //   out.println(
+                    //            entryTemplate
+                    //                    .replace("{{ summary }}", escapeHtml(entry.getSummary()))
+                    //                    .replace("{{ description }}", escapeHtml(entry.getDescription()))
+                    //    );
+                    //}
                 } else if (insideLoop) {
                     sb.append(line).append("\n");
                 } else {
@@ -69,7 +69,7 @@ public class MainServlet extends HttpServlet {
         String summary = req.getParameter("summary");
         String description = req.getParameter("description");
 
-        tomcatService.addEntry(new TomcatEntry(summary, description));
+        //tomcatService.addEntry(new TomcatEntry(summary, description));
 
         resp.sendRedirect("index.html");
     }
