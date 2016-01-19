@@ -48,6 +48,11 @@ public class MainServlet extends HttpServlet {
                     //                    .replace("{{ description }}", escapeHtml(entry.getDescription()))
                     //    );
                     //}
+                    
+                    sb.append("MYSQL_DATABASE:" + System.getEnv("MYSQL_DATABASE") + "<br/>" );
+                    sb.append("MYSQL_PASSWORD:" + System.getEnv("MYSQL_PASSWORD") + "<br/>");
+                    sb.append("MYSQL_USER:" + System.getEnv("MYSQL_USER") + "<br/>");
+
                 } else if (insideLoop) {
                     sb.append(line).append("\n");
                 } else {
